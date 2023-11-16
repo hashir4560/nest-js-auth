@@ -17,30 +17,31 @@
 //   }
 //   signupLocal(dto: AuthDto) {}
 // }
-<<<<<<< Updated upstream
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 // import users from '../users.json';
-const users = require('../users.json');
-=======
+// eslint-disable-next-line
 
-import { Injectable, UnauthorizedException } from '@nestjs/common';
-import * as path from 'path';
-const usersPath = path.resolve(__dirname, '../users.json');
-const users = require(usersPath) as { email: string; password: string }[];
->>>>>>> Stashed changes
+const users = require('../users.json');
+// const users = require('../users.json');
+
 import { AuthDto } from './dto';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthService {
+  constructor(private jwtService: JwtService) {}
+
   signinLocal(dto: AuthDto) {
+    //Retrieve the user
+
     const user = users.find((_user) => _user.email === dto.email);
-    if (!user) throw new UnauthorizedException('Credentials incorrect ');
+    if (!user) throw new UnauthorizedException('Credenti  als incorrect ');
     if (user.password !== dto.password)
       throw new UnauthorizedException('Credentials incorrect');
+
     return user;
   }
+  signupLocal(dto: AuthDto) {}
 
-  signupLocal(dto: AuthDto) {
-    // Implement signup logic if needed
-  }
+  signUser(userId: number, email: string, type: string) {}
 }
