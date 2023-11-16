@@ -1,7 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthDto } from './dto';
-import { arrayBuffer } from 'stream/consumers';
 
 @Controller('auth')
 export class AuthController {
