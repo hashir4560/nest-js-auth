@@ -16,7 +16,7 @@ export class AuthService {
     //Retrieve the user
 
     const user = users.find((_user) => _user.email === dto.email);
-    if (!user) throw new UnauthorizedException('Credenti  als incorrect ');
+    if (!user) throw new UnauthorizedException('Credentials incorrect ');
     if (user.password !== dto.password)
       throw new UnauthorizedException('Credentials incorrect');
 
