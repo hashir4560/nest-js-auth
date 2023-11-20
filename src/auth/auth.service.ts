@@ -1,9 +1,9 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 // import users from '../users.json';
 // eslint-disable-next-line
-const users = require('../users.json');
-
 // const users = require('../users.json');
+
+const users = require('../users.json');
 
 import { AuthDto } from './dto';
 import { JwtService } from '@nestjs/jwt';
@@ -27,6 +27,7 @@ export class AuthService {
   signUser(userId: number, email: string, type: string) {
     return this.jwtService.sign({
       sub: userId,
+
       email: email,
       type: type,
     });
